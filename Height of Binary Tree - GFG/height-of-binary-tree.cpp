@@ -108,10 +108,7 @@ class Solution{
         int leftside=height(node->left);
         int rightside=height(node->right);
         
-        if( leftside>rightside)
-        return(leftside+1);
-        else
-        return (rightside+1);
+        return max(leftside,rightside)+1;
         
     
     }
