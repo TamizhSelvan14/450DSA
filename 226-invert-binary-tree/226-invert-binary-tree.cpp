@@ -17,7 +17,7 @@ public:
             return;
         
         
-        TreeNode *temp=NULL;
+        // TreeNode *temp=NULL;
         // temp=root->left;
         // root->left=root->right;
         // root->right=temp;
@@ -33,8 +33,15 @@ public:
     
     TreeNode* invertTree(TreeNode* root) {
         
-        inorder(root);
+        // inorder(root);
+        if(root==nullptr)
+            return NULL;
         
+        
+        swap(root->left,root->right);
+        
+        invertTree(root->left);
+        invertTree(root->right);
         
         
         return root;
