@@ -106,7 +106,19 @@ class Solution
     //from left to right in Binary Tree.
     vector<int> topView(Node *root)
     {
-        map<int,int> umap;
+    // eg:-  2   -1   0   1   2  => index lines
+    
+    //                 1
+    //             2       3
+    //          4     5  6    7
+    
+    
+    //     op:4 2 1 3 7
+        
+        //to store the index eg -2=>4,-1=>2,0=>1...
+        map<int,int> umap; //use map to get the keys in sorted order
+        
+        //push the node and index
         queue<pair<Node*,int>>q;
         
         q.push({root,0});
@@ -119,6 +131,7 @@ class Solution
             Node* node=it.first;
             int line=it.second;
             
+            //if the index is not present then enter 
             if(umap.find(line)==umap.end())
                     umap[line]=node->data;
                     
@@ -133,7 +146,7 @@ class Solution
             
         }
         vector<int>ans;
-        
+        //traverse the index and print the ans
         for(auto x:umap){
             ans.push_back(x.second);
         }
